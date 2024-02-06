@@ -13,3 +13,9 @@ pub struct HelloTemplate {
 pub struct UsersTemplate {
     pub users: Vec<User>,
 }
+
+#[derive(Template)]
+#[template(path = "users-list.html")]
+pub struct UsersListTemplate {
+    pub users: Vec<User>,
+}

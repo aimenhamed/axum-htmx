@@ -1,8 +1,5 @@
-use axum::{
-    routing::{get, post},
-    Router,
-};
-use handlers::{add_user, handler_404, health_check, root};
+use axum::{routing::get, Router};
+use handlers::{handler_404, health_check, root};
 use sqlx::postgres::PgPoolOptions;
 use tracing::info;
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
@@ -31,7 +28,6 @@ async fn main() -> Result<(), sqlx::Error> {
         Router::new()
             .route("/", get(root))
             .route("/health", get(health_check))
-            .route("/users", post(add_user))
             .with_state(pool.clone()),
         |app, c| app.merge(c),
     );

@@ -6,4 +6,8 @@
 <p>{{- u.name -}}</p> 
 {% endfor -%}
 </div>
+<form hx-post="/users" hx-swap="innerHTML" hx-target="#users">
+  <input type="text" id="name" name="name" />
+  <button type="submit">Add user</button>
+</form>
 {% endblock %}
